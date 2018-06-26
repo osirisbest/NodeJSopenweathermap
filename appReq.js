@@ -1,6 +1,6 @@
 //Test connection to 1C
 const http = require('http');
-let username = "sd", passw = "123", path = '/omnic/hs/ping?t=1'
+let username = "sd", passw = 111, path = '/omnic/hs/ping?t=1'
 
 let host = 'localhost'
 var options = {
@@ -9,7 +9,8 @@ var options = {
     path,
     // authentication headers
     headers: {
-        'Authorization': 'Basic c2Q6MTEx'// + new Buffer(username + ':' + passw).toString('base64')
+        //'Authorization': 'Basic c2Q6MTEx'// + new Buffer(username + ':' + passw).toString('base64')
+        'Authorization': 'Basic '+ Buffer.from(username + ':' + passw).toString('base64')
     }
 };
 
@@ -30,5 +31,7 @@ function doGet() {
     }
     )
 }
+
+console.log(options)
 
 setInterval(() => { doGet() }, 3000)
