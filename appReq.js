@@ -8,14 +8,16 @@ var options = {
     port: 80,
     path,
     // authentication headers
-    headers: {
-        //'Authorization': 'Basic c2Q6MTEx'// + new Buffer(username + ':' + passw).toString('base64')
+    headers: {        //'Authorization': 'Basic c2Q6MTEx'// + new Buffer(username + ':' + passw).toString('base64')
         'Authorization': 'Basic '+ Buffer.from(username + ':' + passw).toString('base64')
     }
 };
 
 //this is the call
+let x=0;
 function doGet() {
+    x++;
+    console.log("№ "+x);
     let request = http.get(options, function (res) {
         var body = "";
         res.on('data', function (data) {
