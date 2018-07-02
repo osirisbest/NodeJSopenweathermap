@@ -1,6 +1,7 @@
 //Test connection to 1C
 const http = require('http');
-let username = "sd", passw = 111, path = '/omnic/hs/ping?t=1'
+let username = "sd", passw = 111
+const path = '/omnic/hs/ping?t=1'
 
 let host = 'localhost'
 var options = {
@@ -15,8 +16,11 @@ var options = {
 
 //this is the call
 let x=0;
+
+
 function doGet() {
     x++;
+    options['path']=path+"&x="+x.toString();
     console.log("№ "+x);
     let request = http.get(options, function (res) {
         var body = "";
